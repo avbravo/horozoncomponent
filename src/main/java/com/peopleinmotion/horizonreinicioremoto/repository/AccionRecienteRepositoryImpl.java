@@ -101,8 +101,8 @@ public class AccionRecienteRepositoryImpl implements AccionRecienteRepository {
     }
 
     @Override
-    public Optional<AccionReciente> findByBancoIdAndCajeroIdUltimaAccionDisponible(BigInteger BANCOID, BigInteger CAJEROID) {
-        return accionRecienteFacade.findByBancoIdAndCajeroIdUltimaAccionDisponible(BANCOID, CAJEROID);
+    public Optional<AccionReciente> findByBancoIdAndCajeroIdUltimaAccionDisponible(BigInteger BANCOID, BigInteger CAJEROID,BigInteger GrupoEstadoPendiente, BigInteger GrupoEstadoProcesando) {
+        return accionRecienteFacade.findByBancoIdAndCajeroIdUltimaAccionDisponible(BANCOID, CAJEROID,GrupoEstadoPendiente,GrupoEstadoProcesando);
     }
 
     @Override

@@ -796,7 +796,7 @@ texthtml=false;
 
         return completableFuture;
     }// </editor-fold>
-     public Boolean gmail(String to, String titulo, String mensaje,
+     public Boolean gmailX(String to, String titulo, String mensaje,
             String from, String password, Boolean... typehtml){
                 
       //  public Boolean gmail(String[] to, String[] cc, String[] bcc, String titulo, String mensaje,String from, String password, Boolean... typehtml) throws AddressException {

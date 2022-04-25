@@ -242,27 +242,48 @@ public class DashboardServicesImpl implements DashboardServices {
     public String generarSiglas(AccionReciente accionReciente) {
         String siglas="";
         try {
-             if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoEnEsperaDeEjecucionId"))) {
+             if (accionReciente.getGRUPOESTADOID().equals(JsfUtil.contextToBigInteger("grupoEstadoSolicitadoId"))) {
                                 siglas = "S";
                             } else {
-                                if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoProcesandoId"))) {
+                                if (accionReciente.getGRUPOESTADOID().equals(JsfUtil.contextToBigInteger("grupoEstadoEnprocesoId"))) {
                                     siglas = "P";
                                 } else {
-                                    if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoFinalizadoId"))) {
+                                    if (accionReciente.getGRUPOESTADOID().equals(JsfUtil.contextToBigInteger("grupoEstadoFinalizadoId"))) {
                                         siglas = "F";
                                     } else {
-                                        if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoAcciónNoSePuedeEjecutarId"))) {
+                                        if (accionReciente.getGRUPOESTADOID().equals(JsfUtil.contextToBigInteger("grupoEstadoNoSepuedejecutarId"))) {
                                             siglas = "N";
                                         } else {
-                                            if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoRobotNoDisponibleId"))) {
-                                                siglas = "R";
-                                            } else {
-
-                                            }
+//                                            if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoRobotNoDisponibleId"))) {
+//                                                siglas = "R";
+//                                            } else {
+//
+//                                            }
                                         }
                                     }
                                 }
                             }
+//             if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoEnEsperaDeEjecucionId"))) {
+//                                siglas = "S";
+//                            } else {
+//                                if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoProcesandoId"))) {
+//                                    siglas = "P";
+//                                } else {
+//                                    if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoFinalizadoId"))) {
+//                                        siglas = "F";
+//                                    } else {
+//                                        if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoAcciónNoSePuedeEjecutarId"))) {
+//                                            siglas = "N";
+//                                        } else {
+//                                            if (accionReciente.getESTADOID().equals(JsfUtil.contextToBigInteger("estadoRobotNoDisponibleId"))) {
+//                                                siglas = "R";
+//                                            } else {
+//
+//                                            }
+//                                        }
+//                                    }
+//                                }
+//                            }
         } catch (Exception e) {
                JsfUtil.errorMessage(JsfUtil.nameOfMethod()+ " " + e.getLocalizedMessage());
         }

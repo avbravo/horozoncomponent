@@ -208,8 +208,8 @@ public class EmailServicesImpl implements EmailServices {
             @Override
             public Object call() throws Exception {
 
-//               jmoordbEmailSender.sendOutlook(to, cc, bcc, titulo.toLowerCase(), mensaje, emailemisor, passwordemisor, false);
-                 jmoordbEmailSender.gmailToBCCCC(to, cc, bcc, titulo.toLowerCase(), mensaje,  "horizonreinicioremoto@gmail.com", "reinicio123", false);
+   jmoordbEmailSender.sendOutlook(to, cc, bcc, titulo.toLowerCase(), mensaje, emailemisor, passwordemisor, false);
+            //     jmoordbEmailSender.gmailToBCCCC(to, cc, bcc, titulo.toLowerCase(), mensaje,  "horizonreinicioremoto@gmail.com", "reinicio123", false);
                 //jmoordbEmailSender.send(to, cc, bcc, titulo.toLowerCase(), mensaje, "avbravo@gmail.com","GCox$jav84$mAgzm", false);
                 completableFuture.complete("enviado");
 
@@ -395,15 +395,15 @@ public class EmailServicesImpl implements EmailServices {
                 JsfUtil.warningMessage("No hay ninguna configuracion de email establecida.");
                 return Boolean.FALSE;
             }
-             return     jmoordbEmailSender.gmail(usuario.getEMAIL(), "Token", message, 
-                    "horizonreinicioremoto@gmail.com", 
-                   "reinicio123",
-                            Boolean.FALSE);
+//             return     jmoordbEmailSender.gmail(usuario.getEMAIL(), "Token", message, 
+//                    "horizonreinicioremoto@gmail.com", 
+//                   "reinicio123",
+//                            Boolean.FALSE);
 
-//            return jmoordbEmailSender.sendOutlook(usuario.getEMAIL(), "Token", message,
-//                    emailConfigurationOptional.get().getEMAIL(),
-//                    JsfUtil.desencriptar(emailConfigurationOptional.get().getPASSWORD()),
-//                    Boolean.FALSE);
+            return jmoordbEmailSender.sendOutlook(usuario.getEMAIL(), "Token", message,
+                    emailConfigurationOptional.get().getEMAIL(),
+                    JsfUtil.desencriptar(emailConfigurationOptional.get().getPASSWORD()),
+                    Boolean.FALSE);
 
         } catch (Exception e) {
             JsfUtil.warningMessage(JsfUtil.nameOfMethod() + " " + e.getLocalizedMessage());

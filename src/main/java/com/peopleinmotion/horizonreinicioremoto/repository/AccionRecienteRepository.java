@@ -52,6 +52,7 @@ public interface AccionRecienteRepository {
     public List<AccionReciente> findBancoIdEntreFechasTypeDateEstadoPendienteOProgreso(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO, BigInteger ESTADOIDPROCESANDO, BigInteger ESTADOIDEJECUTADA);
     
     public List<AccionReciente> findBancoIdEntreFechasTypeDateGrupoEstadoPendienteOProgreso(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO, BigInteger GrupoEstadoPendiente, BigInteger GrupoEstadoProcesando) ;
+    public List<AccionReciente> findBancoIdEntreFechasTypeDateGrupoEstadoPendienteOProgresoOEstadoId(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO, BigInteger GrupoEstadoPendiente, BigInteger GrupoEstadoProcesando,  BigInteger EstadoId) ;
      public List<AccionReciente> findBancoIdEntreFechasForSchedule(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO, 
            BigInteger estadoEnEsperaDeEjecucionId ,
            BigInteger estadoProcesandoId,

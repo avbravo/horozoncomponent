@@ -118,6 +118,10 @@ public class AccionRecienteRepositoryImpl implements AccionRecienteRepository {
     public List<AccionReciente> findBancoIdEntreFechasTypeDateGrupoEstadoPendienteOProgreso(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO, BigInteger GrupoEstadoPendiente, BigInteger GrupoEstadoProcesando) {
         return accionRecienteFacade.findBancoIdEntreFechasTypeDateGrupoEstadoPendienteOProgreso(BANCOID, DESDE, HASTA, ACTIVO, GrupoEstadoPendiente, GrupoEstadoProcesando);
     }
+    @Override
+    public List<AccionReciente> findBancoIdEntreFechasTypeDateGrupoEstadoPendienteOProgresoOEstadoId(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO, BigInteger GrupoEstadoPendiente, BigInteger GrupoEstadoProcesando, BigInteger EstadoId) {
+        return accionRecienteFacade.findBancoIdEntreFechasTypeDateGrupoEstadoPendienteOProgresoOEstadoId(BANCOID, DESDE, HASTA, ACTIVO, GrupoEstadoPendiente, GrupoEstadoProcesando,EstadoId);
+    }
 
     @Override
     public List<AccionReciente> findBancoIdEntreFechasForSchedule(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO,

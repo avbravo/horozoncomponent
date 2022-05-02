@@ -282,6 +282,41 @@ public class AccionRecienteFacade extends AbstractFacade<AccionReciente> {
     }
 
 // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="List<AccionReciente> findBancoIdEntreFechasTypeDateGrupoEstadoPendienteOProgresoOEstadoId(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO,  BigInteger GrupoEstadoPendiente, BigInteger GrupoEstadoProcesando)">
+    /**
+     * Para las situaciones donde se baja una plantilla en telered y
+     * se necesita mostrarlas, porque la plantilla necesita ser subida.
+     * @param BANCOID
+     * @param DESDE
+     * @param HASTA
+     * @param ACTIVO
+     * @param GrupoEstadoPendiente
+     * @param GrupoEstadoProcesando
+     * @param EstadoId
+     * @return 
+     */
+    public List<AccionReciente> findBancoIdEntreFechasTypeDateGrupoEstadoPendienteOProgresoOEstadoId(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO,  BigInteger GrupoEstadoPendiente, BigInteger GrupoEstadoProcesando, BigInteger EstadoId) {
+        List<AccionReciente> list = new ArrayList<>();
+        try {
+
+
+            Query query = em.createQuery("SELECT a FROM AccionReciente a WHERE a.BANCOID = :BANCOID AND (a.GRUPOESTADOID = :GrupoEstadoPendiente OR a.GRUPOESTADOID = :GrupoEstadoProcesando OR a.ESTADOID = :EstadoId)    AND a.ACTIVO = :ACTIVO AND a.FECHAAGENDADA BETWEEN :DESDE AND :HASTA");
+            query.setParameter("BANCOID", BANCOID);
+            query.setParameter("ACTIVO", ACTIVO);
+            query.setParameter("GrupoEstadoPendiente", GrupoEstadoPendiente);
+            query.setParameter("GrupoEstadoProcesando",GrupoEstadoProcesando);
+            query.setParameter("EstadoId",EstadoId);
+            query.setParameter("DESDE", DESDE, TemporalType.TIMESTAMP);
+            query.setParameter("HASTA", HASTA, TemporalType.TIMESTAMP);
+
+            list = query.getResultList();
+        } catch (Exception ex) {
+            JsfUtil.errorMessage(JsfUtil.nameOfMethod() + " " + ex.getLocalizedMessage());
+        }
+        return list;
+    }
+
+// </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="List<AccionReciente> findBancoIdEntreFechasForSchedule(....)">
     public List<AccionReciente> findBancoIdEntreFechasForSchedule(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO,
             BigInteger estadoEnEsperaDeEjecucionId,

@@ -17,6 +17,7 @@ import com.peopleinmotion.horizonreinicioremoto.repository.AgendaRepository;
 import com.peopleinmotion.horizonreinicioremoto.repository.CajeroRepository;
 import com.peopleinmotion.horizonreinicioremoto.repository.EstadoRepository;
 import com.peopleinmotion.horizonreinicioremoto.repository.GrupoEstadoRepository;
+import com.peopleinmotion.horizonreinicioremoto.utils.ConsoleUtil;
 import com.peopleinmotion.horizonreinicioremoto.utils.JsfUtil;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -176,8 +177,8 @@ public class DashboardServicesImpl implements DashboardServices {
     // </editor-fold>
 
    
-    // <editor-fold defaultstate="collapsed" desc=Boolean drawRowsAgendamiento(List<AccionReciente> accionRecienteList) ">
-
+    // <editor-fold defaultstate="collapsed" desc=Boolean drawRowsAgendamiento(List<AccionReciente> accionRecienteList">
+  
     @Override
     public Boolean drawRowsAgendamiento(List<AccionReciente> accionRecienteList) {
         try {
@@ -218,17 +219,25 @@ public class DashboardServicesImpl implements DashboardServices {
     @Override
     public String onCommandButtonSelectAccionReciente(AccionReciente accionReciente, String formularioretorno) {
         try {
+            
+            
             JmoordbContext.put("accionRecienteDashboard", accionReciente);
+         
             JmoordbContext.put("formularioRetorno", formularioretorno);
+        
             Optional<Cajero> cajeroOptional = cajeroRepository.findByCajeroId(accionReciente.getCAJEROID());
 
             if (!cajeroOptional.isPresent()) {
 
             } else {
+            
                 Cajero cajero = cajeroOptional.get();
+            
                 JmoordbContext.put("cajero", cajero);
+             
             }
         } catch (Exception e) {
+            ConsoleUtil.warning(" xsAN 9" +e.getLocalizedMessage());
             JsfUtil.errorMessage(JsfUtil.nameOfMethod()+ " " + e.getLocalizedMessage());
         }
         return "";

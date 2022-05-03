@@ -124,10 +124,13 @@ public class AccionRecienteFacade extends AbstractFacade<AccionReciente> {
 
         try {
          
-            Query query = em.createQuery("SELECT a FROM AccionReciente a WHERE a.BANCOID = :BANCOID AND a.CAJEROID = :CAJEROID AND (a.GRUPOESTADOID = :GrupoEstadoPendiente OR a.GRUPOESTADOID = :GrupoEstadoProcesando) AND a.ACTIVO = 'SI' ORDER BY a.AGENDAID DESC");
+            Query query = em.createQuery("SELECT a FROM AccionReciente a WHERE a.BANCOID = :BANCOID AND a.CAJEROID = :CAJEROID AND (a.GRUPOESTADOID = :GrupoEstadoPendiente OR a.GRUPOESTADOID = :GrupoEstadoProcesando OR a.ESTADOID = :estadoPlantillaDeshabilitada) AND a.ACTIVO = 'SI' ORDER BY a.AGENDAID DESC");
             query.setParameter("BANCOID", BANCOID).setParameter("CAJEROID", CAJEROID);
               query.setParameter("GrupoEstadoPendiente", GrupoEstadoPendiente);
             query.setParameter("GrupoEstadoProcesando",GrupoEstadoProcesando);
+            query.setParameter("GrupoEstadoProcesando",GrupoEstadoProcesando);
+           
+            query.setParameter("estadoPlantillaDeshabilitada",JsfUtil.contextToBigInteger("estadoPlantillaDeshabilitada"));
             query.setHint(QueryHints.REFRESH, HintValues.TRUE);
             
             query.setFirstResult(0);

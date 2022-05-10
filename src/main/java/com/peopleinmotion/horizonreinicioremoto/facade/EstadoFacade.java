@@ -69,7 +69,7 @@ public class EstadoFacade extends AbstractFacade<Estado> {
         List<Estado> list = new ArrayList<>();
         try {
 
-            Query query = em.createQuery("SELECT e FROM Estado e WHERE e.GRUPOESTADOID = :GRUPOESTADOID");
+            Query query = em.createQuery("SELECT e FROM Estado e WHERE e.GRUPOESTADOID = :GRUPOESTADOID AND a.ACTIVO = 'SI'");
             list = query.setParameter("GRUPOESTADOID", GRUPOESTADOID).getResultList();
         } catch (Exception ex) {
             // System.out.println("findByGrupoEstadoId() " + ex.getLocalizedMessage());

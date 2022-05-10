@@ -13,6 +13,7 @@ import com.peopleinmotion.horizonreinicioremoto.entity.Cajero;
 import com.peopleinmotion.horizonreinicioremoto.entity.Estado;
 import com.peopleinmotion.horizonreinicioremoto.entity.GrupoAccion;
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +34,7 @@ public interface AccionRecienteServices {
     public Boolean renderedPendiente(AccionReciente accionReciente);
     public Boolean renderedDenegado(AccionReciente accionReciente);
     public Boolean changed(AccionReciente accionReciente);
+    
+    public List<AccionReciente> findMismoDiaBancoIdCajeroIdEntreFechasTypeDate(BigInteger BANCOID,BigInteger CAJEROID, BigInteger ACCIONID,Date DESDE, Date HASTA, String ACTIVO);;
    
 }

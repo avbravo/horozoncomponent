@@ -271,4 +271,9 @@ public class AccionRecienteRepositoryImpl implements AccionRecienteRepository {
         return accionRecienteFacade.findAutorizadoBancoIdAndActivoLike(AUTORIZADO, BANCOID, ACTIVO);
     }
 
+    @Override
+    public List<AccionReciente> findMismoDiaBancoIdCajeroIdEntreFechasTypeDate(BigInteger BANCOID, BigInteger CAJEROID, BigInteger ACCIONID,Date DESDE, Date HASTA, String ACTIVO) {
+      return accionRecienteFacade.findMismoDiaBancoIdCajeroIdEntreFechasTypeDate( BANCOID,CAJEROID, ACCIONID, DESDE,  HASTA,  ACTIVO);
+    }
+
 }

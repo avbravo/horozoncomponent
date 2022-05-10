@@ -241,6 +241,27 @@ public class AccionRecienteFacade extends AbstractFacade<AccionReciente> {
     }
 
 // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="List<AccionReciente> findMismoDiaBancoIdEntreFechasTypeDate(BigInteger BANCOID,BigInteger CAJEROID, Date DESDE, Date HASTA, String ACTIVO)">
+    public List<AccionReciente> findMismoDiaBancoIdCajeroIdEntreFechasTypeDate(BigInteger BANCOID,BigInteger CAJEROID, BigInteger ACCIONID,Date DESDE, Date HASTA, String ACTIVO) {
+        List<AccionReciente> list = new ArrayList<>();
+        try {
+
+            Query query = em.createQuery("SELECT a FROM AccionReciente a WHERE a.BANCOID = :BANCOID AND a.CAJEROID = :CAJEROID AND a.ACCIONID = :ACCIONID AND a.ACTIVO = :ACTIVO  AND a.FECHAAGENDADA BETWEEN :DESDE AND :HASTA");
+            query.setParameter("BANCOID", BANCOID);
+            query.setParameter("CAJEROID", CAJEROID);
+            query.setParameter("ACCIONID", ACCIONID);
+            query.setParameter("ACTIVO", ACTIVO);
+            query.setParameter("DESDE", DESDE, TemporalType.TIMESTAMP);
+            query.setParameter("HASTA", HASTA, TemporalType.TIMESTAMP);
+
+            list = query.getResultList();
+        } catch (Exception ex) {
+            JsfUtil.errorMessage(JsfUtil.nameOfMethod() + " " + ex.getLocalizedMessage());
+        }
+        return list;
+    }
+
+// </editor-fold>
     // <editor-fold defaultstate="collapsed" desc="List<AccionReciente> findBancoIdEntreFechasTypeDateEstadoPendienteOProgreso(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO, BigInteger ESTADOIDPROCESANDO , BigInteger ESTADOIDEJECUTADA)">
     public List<AccionReciente> findBancoIdEntreFechasTypeDateEstadoPendienteOProgreso(BigInteger BANCOID, Date DESDE, Date HASTA, String ACTIVO, BigInteger ESTADOIDPROCESANDO, BigInteger ESTADOIDEJECUTADA) {
         List<AccionReciente> list = new ArrayList<>();

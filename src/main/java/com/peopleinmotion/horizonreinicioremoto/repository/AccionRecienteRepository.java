@@ -100,4 +100,6 @@ public interface AccionRecienteRepository {
   public List<AccionReciente> findAutorizadoBancoIdAndActivoLikePaginacion(String AUTORIZADO, BigInteger BANCOID, String ACTIVO, Integer pageNumber, Integer rowForPage);
   
      public List<AccionReciente> findAutorizadoBancoIdAndActivoLike(String AUTORIZADO, BigInteger BANCOID, String ACTIVO);
+     
+     public List<AccionReciente> findMismoDiaBancoIdCajeroIdEntreFechasTypeDate(BigInteger BANCOID,BigInteger CAJEROID, BigInteger ACCIONID,Date DESDE, Date HASTA, String ACTIVO);
 }

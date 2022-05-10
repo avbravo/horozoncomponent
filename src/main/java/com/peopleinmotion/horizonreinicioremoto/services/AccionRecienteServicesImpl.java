@@ -15,6 +15,7 @@ import com.peopleinmotion.horizonreinicioremoto.entity.GrupoAccion;
 import com.peopleinmotion.horizonreinicioremoto.repository.AccionRecienteRepository;
 import com.peopleinmotion.horizonreinicioremoto.utils.JsfUtil;
 import java.math.BigInteger;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.ejb.Stateless;
@@ -189,4 +190,10 @@ public class AccionRecienteServicesImpl implements AccionRecienteServices {
         return Boolean.FALSE;
     }
         // </editor-fold>
+    
+    
+   @Override
+    public List<AccionReciente> findMismoDiaBancoIdCajeroIdEntreFechasTypeDate(BigInteger BANCOID, BigInteger CAJEROID, BigInteger ACCIONID,Date DESDE, Date HASTA, String ACTIVO) {
+      return accionRecienteRepository.findMismoDiaBancoIdCajeroIdEntreFechasTypeDate( BANCOID,CAJEROID, ACCIONID, DESDE,  HASTA,  ACTIVO);
+    }
 }
